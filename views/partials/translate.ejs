@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>??</title>
+    
+<style>body #google_translate_element {
+    position: absolute;
+    bottom: calc(53px + 16px);
+    right: 16px !important;
+    /* margin-top: 91px;
+    margin-left: 516px; */
+    top: 1;
+  }
+  body .goog-te-gadget {
+    font-family: Roboto, 'Open Sans', sans-serif !important;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+  body .goog-te-gadget-simple {
+      background-color: white;
+      color: black;
+      border: 6px !important;
+      padding: 8px 4px -1px 30px !important;
+      border-radius: 4px !important;
+      font-size: 1rem !important;
+      line-height: 2rem !important;
+      display: inline-block;
+      cursor: pointer;
+      margin-top: 130px;
+      margin-right: 841px;
+  }
+  body .goog-te-menu2 {
+    max-width: 100%;
+  }
+  body .goog-te-menu-value {
+    color: black !important
+  }
+  body .goog-te-menu-value:before {
+    font-family: 'Material Icons';
+    /* content: "\E927"; */
+    margin-right: 16px;
+    font-size: 1.6rem;
+    vertical-align: -5px;
+    display: default;
+  }
+  body .goog-te-menu-value span:nth-child(5) {
+    display: none;
+  }
+  body .goog-te-menu-value span:nth-child(3) {
+    border: none !important;
+    font-family: 'Material Icons';
+  }
+  body .goog-te-menu-value span:nth-child(3):after {
+    font-family: 'Material Icons';
+    /* content: "\E5C5"; */
+    font-size: 1.5rem;
+    vertical-align: -6px;
+  }
+  body .goog-te-gadget-icon {
+    background-image: url(https://placehold.it/32) !important;
+    background-position: 0px 0px;
+    height: 32px !important;
+    width: 32px !important;
+    margin-right: 8px !important;
+    display: none;
+  }
+  body .goog-te-banner-frame.skiptranslate {
+    display: none !important;
+  }
+  body body {
+    top: 0px !important;
+  }
+  @media (max-width: 667px) {
+    body #google_translate_element {
+        bottom: calc(100% - 50% - 53px);
+        left: 16px !important;
+        width: 100% !important;
+   }
+    body #google_translate_element goog-te-gadget {
+        width: 100% !important;
+   }
+    body #google_translate_element .skiptranslate {
+        width: 100% !important;
+   }
+    body #google_translate_element .goog-te-gadget-simple {
+        width: calc(100% - 32px) !important;
+        text-align: center;
+   }
+  }</style>
+</head>
+
+<body>
+    
+
+<div id="google_translate_element"></div>
+      <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement(
+            {
+              pageLanguage: "en",
+              includedLanguages: "en,gu,hi,sa",
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false,
+            },
+            "google_translate_element"
+          );
+        }
+      </script>
+      <script
+        type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+      ></script>
+      <script>
+        $('document').ready(function () {
+
+
+// RESTYLE THE DROPDOWN MENU
+$('#google_translate_element').on("click", function () {
+
+// Change font family and color
+$("iframe").contents().find(".goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div, .goog-te-menu2 *")
+    .css({
+        'color': '#000',
+        'font-family': 'Manrope',
+                        'width':'100%'
+    });
+// Change menu's padding
+$("iframe").contents().find('.goog-te-menu2-item-selected').css ('display', 'none');
+    
+        // Change menu's padding
+$("iframe").contents().find('.goog-te-menu2').css ('padding', '0px');
+
+// Change the padding of the languages
+$("iframe").contents().find('.goog-te-menu2-item div').css('padding', '24px');
+
+// Change the width of the languages
+$("iframe").contents().find('.goog-te-menu2-item').css('width', '100%');
+$("iframe").contents().find('td').css('width', '100%');
+
+// Change hover effects
+$("iframe").contents().find(".goog-te-menu2-item div").hover(function () {
+    $(this).css('background-color', '#151515').find('span.text').css('color', 'white');
+}, function () {
+    $(this).css('background-color', 'white').find('span.text').css('color', '#000');
+});
+
+// Change Google's default blue border
+$("iframe").contents().find('.goog-te-menu2').css('border', 'none');
+
+// Change the iframe's box shadow
+$(".goog-te-menu-frame").css('box-shadow', '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3)');
+
+
+
+// Change the iframe's size and position?
+$(".goog-te-menu-frame").css({
+    'height': '100%',
+    'width': '100%',
+    'top': '0px'
+});
+// Change iframes's size
+$("iframe").contents().find('.goog-te-menu2').css({
+    'height': '100%',
+    'width': '100%'
+});
+});
+});
+      </script>
+
+</div>
+
+</body>
+</html>

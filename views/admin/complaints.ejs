@@ -1,0 +1,115 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_github-corner.ejs') %>
+<%- include('../partials/translate.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="alert alert-success" role="alert" style="margin: 10px 60px;">
+    <strong>Welcome To Admin Dashbord Mr. <%= admin.name %> !</strong>
+</div>
+
+<section id="admin-dashboard">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="users-tab" href="/admin/dashboard" role="tab" aria-controls="users"
+                    aria-selected="true">
+                    <i class="fas fa-tools"></i>
+                    Create Account</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" id="complaints-tab" data-toggle="tab" href="/admin/complaints" role="tab"
+                    aria-controls="complaints" aria-selected="false">
+                    <i class="fas fa-envelope-open-text"></i>
+                    Complaints</a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" id="create-account-tab" href="/admin/users/display" role="tab"
+                    aria-controls="create-account" aria-selected="true">
+                    <i class="fas fa-user-ninja"></i>Users</a>
+            </li>
+
+
+        </ul>
+
+        <div class="row my-5"> 
+
+            <!--display-complaints-->
+            <div class="col" id="display-complaints">
+                <div class="card">
+                    <div class="card-header">
+                        Complaints
+                    </div>
+                    <div class="card-body" style="overflow: auto;">
+                        <ul class="list-group list-group-flush">
+                           
+                            <% const filterComplaints = complaints.filter(complaint =>  typeof complaint.forwardTo === 'undefined') %>
+
+                            <% filterComplaints.forEach((complaint) => { %>
+
+                            <li class="list-group-item">
+                                <%= complaint.description %>
+                                <a href="#" onclick="forward(`<%= complaint._id %>`)"> 
+                                    <i class="fas fa-share-square float-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <% }); %>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Forward Complaints-->
+            <div class="col-md-4" id="forward-complaints" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        Forward Complaint To :
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/admin/complaints/forward" method="post">
+                            <div class="form-group">
+                                <select name="staffId" class="browser-default custom-select" required>
+
+                                    <% const staffs = users.filter((user) => user.role === 'staff') %>
+                                    <% staffs.forEach((staff) => { %>
+                                    <option value=<%=staff._id%>> <%= `${staff.name} (${staff.department})` %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <input type="hidden" name="complaintId" value="" id="complaint">
+                            <button type="submit" class="btn btn-primary btn-block">Forward</button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    const displayComplaints = document.getElementById('display-complaints');
+    const forwardComplaints = document.getElementById('forward-complaints');
+
+    function forward(cid) {
+        displayComplaints.classList.add('col-md-8');
+        forwardComplaints.style.display = 'block';
+        //set respondents ID
+        document.getElementById("complaint").value = cid;
+    }
+
+</script>
+
+<%- include('../partials/_messages.ejs') %>
+<%- include('../partials/_footer.ejs')%>

@@ -1,0 +1,75 @@
+<%- include('../partials/_header.ejs') %>
+<%- include('../partials/_github-corner.ejs') %>
+<%- include('../partials/translate.ejs') %>
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="alert alert-success" role="alert" style="margin: 10px 50px;">
+  <strong>Welcome To staff Dashbord !</strong>
+</div>
+
+<section id="staff-dashboard">
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+      <li class="nav-item">
+        <a class="nav-link" id="staff-tab" href="/staff/dashboard" role="tab" aria-controls="staffs"
+            aria-selected="true">
+            <i class="fas fa-user"></i>
+           <%=staff.name %></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" id="complaints-tab" href="/staff/complaints" role="tab" aria-controls="complaints"
+          aria-selected="false">
+          <i class="fas fa-history"></i> Complaints History</a>
+      </li>
+    </ul>
+
+
+    <div class="row py-5">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+              <table class="table">
+                  <thead class="thead-light">
+                      <tr>
+                          <th scope="col" class="bold">#</th>
+                          <th scope="col" class="bold"><i class="fas fa-bullhorn"></i> Complaints</th>
+                          <th scope="col" class="bold"><i class="fas fa-calendar-alt"
+                                  aria-hidden="true"></i> Date</th>
+                          <th scope="col" class="bold"><i class="fas fa-reply"
+                                    aria-hidden="true"></i> Feedback</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% const filterComplaints = complaints.filter(complaint =>   complaint.status === 'done') %>
+
+                      <% count = 0 %>
+                      <% filterComplaints.forEach((complaint) => { %>
+                      <tr>
+                          <th scope="row"><%= count++ %></th>
+                          <td><%= complaint.description %></td>
+                          <td><%= complaint.date %></td>
+                          <td><%= complaint.feedback %></td>
+                      </tr>
+                      <% }); %>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+
+
+
+
+
+<%- include('../partials/_footer.ejs')%>

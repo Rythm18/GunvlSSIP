@@ -1,0 +1,49 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/complaints/add" method="post">
+
+                <div class="form-group">
+                    <label for="citizenship">Consumer Number</label>
+                    <input type="text" name="citizenship" id="citizenship" class="form-control" value="<%= typeof (citizenship) != 'undefined' ? citizenship : '' %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Choose Category</label>
+                    <select name="category" class="browser-default custom-select" required>
+                        <option value="Billing">Billing Complaint</option>
+                        <option value="OverHead">OverHead Lines Complaint</option>
+                        <option value="Quality">Quality of Power Complaint</option>
+                        <option value="Meter">Meter Related Complaint</option>
+                        <option value="Power">Interruption in power Complaint</option>
+                        <option value="Refund">Refund Related Complaint</option>
+                        <option value="Others">Others</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="description">Enter complaint</label>
+                    <textarea name="description" class="form-control" id="description" rows="5" required><%= typeof (description) != 'undefined' ?description:'' %></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Send Complaint</button>
+            </form>
+
+        </div>
+
+
+        <div class="col-md-6" id="home-instruction">
+                <div class="card">
+                        <h4 class="card-header"><a>How To Use ?</a></h4>
+                        <div class="card-body">
+                            Type complaint in the field aside. You will then receive a reference ID. Copy that ID safe and use that ID in next Feedback tab to get the feedback from officer.
+                        
+                            <hr>
+                
+                        </div>
+                </div>
+                <%- include('../partials/_messages.ejs') %>
+        </div>
+    </div>
+</div>
