@@ -1,5 +1,5 @@
 {
-  "name": "complaint-management-system",
+  "name": "gunvl-complaints",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix"
   },
-  "author": "Aadarsha",
+  "author": "border-radius",
   "license": "ISC",
   "husky": {
     "hooks": {
