@@ -12,6 +12,7 @@ const passport = require('passport')
 const compression = require('compression')
 const MongoStore = require('connect-mongo')(session)
 const nodemailer = require('nodemailer');
+const { Complaint } = require('../models/complaint')
 
 const app = express()
 // prevent stack traces on production
@@ -105,7 +106,65 @@ const errorRouter = require('../routes/404')
 
 app.use(errorRouter)
 
-// Host and port
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+      user: 'turbogeek641@gmail.com',
+      pass: 'vcle vjly tzln yznv'
+  }
+});
+
+const verifie = 
+  [
+    {"JZRM5981" : "mohatadhruv@gmail.com"},
+    {"JZRM5982" : "dhirajmohata86@gmial.com"},
+    {"JZRM5983" : "mohatadhruv@gmail.com"},
+    {"JZRM5984" : "mohatadhruv@gmail.com"},
+    {"JZRM5985" : "mohatadhruv@gmail.com"},
+    {"JZRM5986" : "dhirajmohata86@gmial.com"},
+    {"JZRM5987" : "mohatadhruv@gmail.com"},
+    {"JZRM5988" : "dhirajmohata86@gmial.com"},
+    {"JZRM5989" : "mohatadhruv@gmail.com"},
+    {"JZRM5990" : "dhirajmohata86@gmial.com"}
+  ];
+
+  app.post('/staff/complaints/temp', async (req, res) => {
+    try {
+      const complaints = await Complaint.findById({ _id: req.body.complaint});
+  
+      var ml;
+      for (const obj of verifie) {
+        for (const key in obj) {
+          if (key === complaints.citizenship) {
+            ml = obj[key];
+            break;
+          }
+        }
+      }
+  
+      console.log(req.body.feedback);
+  
+      const mailOptions = {
+        from: 'turbogeek641@gmail.com',
+        to: ml,
+        subject: req.body.feedback,
+        text: req.body.feedback
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log('Error sending email: ' + error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+  
+      res.status(200).send('Complaint ID fetched successfully!');
+    } catch (error) {
+      console.error('Error fetching complaint ID: ' + error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 const hostname = 'localhost'
 const port = process.env.PORT || 5000
 app.listen(port, () => {

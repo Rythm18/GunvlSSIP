@@ -50,6 +50,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <% var id;%>
                                         <% const filterComplaints = complaints.filter(complaint =>   complaint.status === 'pending') %>
 
                                         <% count = 0 %>
@@ -59,7 +60,9 @@
                                             <td><%= complaint.description %></td>
                                             <td><%= complaint.date %></td>
                                             <td>
-                                                <a href="#" onclick="showreplyBox('<%= complaint._id%>')"> Reply <i class="fas fa-pencil-alt"></i> </a>
+                                                <a href="#" onclick="showreplyBox('<%= complaint._id%>')"> Reply <i class="fas fa-pencil-alt"></i> 
+                                                    <% id = complaint._id %>
+                                                    </a>
 
                                                 <input id="desc_<%=complaint._id%>" type="hidden"
                                                     value="<%=complaint.description%>" />
@@ -90,6 +93,16 @@
                                             class="form-control" style="height:100px;" required="required"></textarea>
                                         
                                         <input type="hidden" name="complaintId" id="complaintId" value="">
+
+                                        <button type="submit" class="btn btn-primary btn-block my-3">Reply</button>
+                                </form>
+
+                                <form action="/staff/complaints/temp" method="post">
+                                    <div class="form-group">
+                                        <textarea name="feedback" placeholder="Give mail to the user ..."
+                                            class="form-control" style="height:100px;" required="required"></textarea>
+                                        
+                                        <input type="hidden" name="complaint" id="complaint" value="<%= id %>">
 
                                         <button type="submit" class="btn btn-primary btn-block my-3">Reply</button>
                                 </form>
