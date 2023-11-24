@@ -1,5 +1,5 @@
 const { Complaint } = require('../models/complaint')
-const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer')
 
 /**
  * @route GET /staff/dashboard
@@ -7,30 +7,26 @@ const nodemailer = require('nodemailer');
  * @type RequestHandler
  */
 
+const verifie = [
+  { JZRM5981: 'mohatadhruv@gmail.com' },
+  { JZRM5982: 'dhirajmohata86@gmial.com' },
+  { JZRM5983: 'mohatadhruv@gmail.com' },
+  { JZRM5984: 'mohatadhruv@gmail.com' },
+  { JZRM5985: 'mohatadhruv@gmail.com' },
+  { JZRM5986: 'dhirajmohata86@gmial.com' },
+  { JZRM5987: 'mohatadhruv@gmail.com' },
+  { JZRM5988: 'dhirajmohata86@gmial.com' },
+  { JZRM5989: 'mohatadhruv@gmail.com' },
+  { JZRM5990: 'dhirajmohata86@gmial.com' }
+]
 
-const verifie = 
-  [
-    {"JZRM5981": "mohatadhruv@gmail.com"},
-    {"JZRM5982":"dhirajmohata86@gmial.com"},
-    {"JZRM5983": "mohatadhruv@gmail.com"},
-    {"JZRM5984" : "mohatadhruv@gmail.com"},
-    {"JZRM5985": "mohatadhruv@gmail.com"},
-    {"JZRM5986":"dhirajmohata86@gmial.com"},
-    {"JZRM5987": "mohatadhruv@gmail.com"},
-    {"JZRM5988":"dhirajmohata86@gmial.com"},
-    {"JZRM5989": "mohatadhruv@gmail.com"},
-    {"JZRM5990":"dhirajmohata86@gmial.com"}
-  ];
-
-
-  const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'turbogeek641@gmail.com',
-        pass: 'vcle vjly tzln yznv'
-    }
-});
-
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'turbogeek641@gmail.com',
+    pass: 'vcle vjly tzln yznv'
+  }
+})
 
 exports.staffDashboard = async (req, res) => {
   try {
@@ -76,19 +72,17 @@ exports.complaintFeedback = async (req, res) => {
       { $set: { feedback: req.body.feedback, status: 'done' } }
     )
 
-    const complaints = await Complaint.find({ _id: req.body.complaintId})
+    const complaints = await Complaint.find({ _id: req.body.complaintId })
 
-
-    var ml;
-    console.log(complaints.citizenship);
-    for (const obj of verifie) 
-    {
+    var ml
+    console.log(complaints.citizenship)
+    for (const obj of verifie) {
       for (const key in obj) {
         if (key === complaints.citizenship) {
-          ml = obj[key];
-          break;
+          ml = obj[key]
+          break
         }
-      }       
+      }
     }
 
     const mailOptions = {
@@ -96,15 +90,15 @@ exports.complaintFeedback = async (req, res) => {
       to: ml,
       subject: 'Hello, you have sussesfully submited your complain',
       text: req.body.feedback
-    };
+    }
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-          console.log('Error sending email: ' + error);
+        console.log('Error sending email: ' + error)
       } else {
-          console.log('Email sent: ' + info.response);
+        console.log('Email sent: ' + info.response)
       }
-  });
+    })
 
     await req.flash('success_msg', 'Complaint replied successfully')
     res.redirect('/staff/dashboard')

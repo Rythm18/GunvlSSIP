@@ -11,7 +11,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const compression = require('compression')
 const MongoStore = require('connect-mongo')(session)
-const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer')
 
 const app = express()
 // prevent stack traces on production

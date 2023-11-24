@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">A
+
+    <title>Login #7</title>
+  </head>
+  <body>
+  
+
+  
+    <section class="vh-100">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid" alt="Sample image">
+          </div>
+<!-- ... (previous HTML content) ... -->
+
+
+<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" id="emailDiv">
+
+  <form>    
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+    </div>
+    <!-- Password input -->
+    <div class="text-center text-lg-start mt-4 pt-2">
+      <button type="button" id="sendCodeButton" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Send Code</button>
+    </div>
+  </form>
+</div>
+
+<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" id="codeDiv" style="display: none;">
+  <form>    
+    <!-- Code input -->
+    <div class="form-outline mb-4">
+      <input type="number" id="form4Example4" class="form-control form-control-lg" placeholder="Enter code here" />
+    </div>
+    <div class="text-center text-lg-start mt-4 pt-2">
+      <button type="button" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+    </div>
+  </form>
+</div>
+
+<!-- ... (remaining HTML content) ... -->
+
+        </div>
+      </div>
+    </section>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get references to the two div elements
+        var emailDiv = document.getElementById('emailDiv');
+        var codeDiv = document.getElementById('codeDiv');
+    
+        // Get reference to the "Send Code" button
+        var sendCodeButton = document.getElementById('sendCodeButton');
+    
+        // Add click event listener to the "Send Code" button
+        sendCodeButton.addEventListener('click', function () {
+          // Hide the email div
+          emailDiv.style.display = 'none';
+    
+          // Show the code div
+          codeDiv.style.display = 'block';
+        });
+      });
+    </script>
+    
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
