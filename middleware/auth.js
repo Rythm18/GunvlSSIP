@@ -22,18 +22,17 @@ function checkNotAuthenticated(req, res, next) {
   // if authenticated
   if (req.isAuthenticated()) {
     if (req.user.role === 'admin') {
-      req.session.role = 'admin';
-      res.redirect('/admin/dashboard');
+      req.session.role = 'admin'
+      res.redirect('/admin/dashboard')
     } else if (req.user.role === 'staff') {
-      req.session.role = 'staff';
-      res.redirect('/staff/dashboard');
+      req.session.role = 'staff'
+      res.redirect('/staff/dashboard')
     }
   } else {
     // if not authenticated just pass to the next middleware
-    next();
+    next()
   }
 }
-
 
 module.exports = {
   checkAuthenticated,
