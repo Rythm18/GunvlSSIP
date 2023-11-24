@@ -17,12 +17,6 @@
   },
   "author": "Aadarsha",
   "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "dependencies": {
     "@hapi/joi": "^16.1.8",
     "alert": "^6.0.1",
@@ -30,7 +24,7 @@
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "ejs": "^3.1.7",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
