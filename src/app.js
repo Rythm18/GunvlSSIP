@@ -104,6 +104,10 @@ const staffRouter = require('../routes/staff')
 
 app.use('/staff', staffRouter)
 
+const login = require('../routes/login')
+
+app.use(login)
+
 const errorRouter = require('../routes/404')
 
 app.use(errorRouter)
@@ -167,6 +171,7 @@ const verifie =
       res.status(500).send('Internal Server Error');
     }
   });
+
 const hostname = 'localhost'
 const port = process.env.PORT || 5000
 app.listen(port, () => {

@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="login fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="login css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="login css/bootstrap.min.css">
     
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">A
+    <link rel="stylesheet" href="login css/style.css">
 
     <title>Login #7</title>
   </head>
@@ -36,12 +36,14 @@
 
   <form>    
     <!-- Email input -->
+    <form action="/"></form>
     <div class="form-outline mb-4">
-      <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+      <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" required />
     </div>
     <!-- Password input -->
     <div class="text-center text-lg-start mt-4 pt-2">
-      <button type="button" id="sendCodeButton" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Send Code</button>
+      <button type="button" id="sendCodeButton" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" disabled>Send Code</button>
+
     </div>
   </form>
 </div>
@@ -50,10 +52,11 @@
   <form>    
     <!-- Code input -->
     <div class="form-outline mb-4">
-      <input type="number" id="form4Example4" class="form-control form-control-lg" placeholder="Enter code here" />
+      <input type="text" id="form4Example4" class="form-control form-control-lg" placeholder="Enter code here"  required/>
     </div>
     <div class="text-center text-lg-start mt-4 pt-2">
-      <button type="button" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+      <button type="button" id="sendCodeButton" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+
     </div>
   </form>
 </div>
@@ -63,8 +66,6 @@
         </div>
       </div>
     </section>
-
-
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         // Get references to the two div elements
@@ -82,12 +83,28 @@
           // Show the code div
           codeDiv.style.display = 'block';
         });
+    
+        // Add input event listener to the email field
+        var emailInput = document.getElementById('form3Example3');
+        emailInput.addEventListener('input', function () {
+          // Enable the "Send Code" button only if the email field is not blank
+          sendCodeButton.disabled = emailInput.value.trim() === '';
+        });
       });
     </script>
+
+<script>
+  // Disable back navigation
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
+</script>
     
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    
+    <script src="login js/jquery-3.3.1.min.js"></script>
+    <script src="login js/popper.min.js"></script>
+    <script src="login js/bootstrap.min.js"></script>
+    <script src="login js/main.js"></script>
   </body>
 </html>
